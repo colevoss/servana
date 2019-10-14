@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Test ENV
-        run: echo ${{ github.sha }}
+        run: echo ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/checkout@master
 
