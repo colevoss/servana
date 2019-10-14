@@ -5,13 +5,18 @@ jobs:
   build:
     name: 'Testing'
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [8, 10, 12]
+
     steps:
       - uses: actions/checkout@master
 
       - name: Setup Node
         uses: actions/setup-node@master
         with:
-          version: 10.x
+          node-version: ${{ matrix.node }}
 
       - name: npm install
         run: npm install
