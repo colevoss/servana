@@ -1,0 +1,62 @@
+{
+  "name": "@colevoss/servana",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "tsc": "tsc",
+    "test": "NODE_ENV=test jest --collect-coverage",
+    "dev": "nodemon",
+    "build": "rimraf dist && npm run tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags",
+    "test-swag": "ts-node scripts/swag",
+    "md-docs": "swagger-markdown"
+  },
+  "author": {
+    "name": "Cole Voss"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/body-parser": "^1.17.1",
+    "@types/jest": "^24.0.18",
+    "@types/js-yaml": "^3.12.1",
+    "@types/node": "^12.7.5",
+    "@types/response-time": "^2.3.4",
+    "@types/supertest": "^2.0.8",
+    "@types/swagger-tools": "^0.10.6",
+    "@types/tmp": "^0.1.0",
+    "axios": "^0.19.0",
+    "jest": "^24.9.0",
+    "js-yaml": "^3.13.1",
+    "nodemon": "^1.19.2",
+    "prettyjson": "^1.2.1",
+    "response-time": "^2.3.2",
+    "rimraf": "^3.0.0",
+    "supertest": "^4.0.2",
+    "swagger-markdown": "^1.2.0",
+    "tmp": "^0.1.0",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "@types/pino": "^5.8.10",
+    "@types/restify-errors": "^4.3.3",
+    "body-parser": "^1.19.0",
+    "connect-query": "^1.0.0",
+    "pino": "^5.13.3",
+    "pino-pretty": "^3.2.1",
+    "reflect-metadata": "^0.1.13",
+    "restana": "^3.3.1",
+    "restify-errors": "^8.0.1",
+    "swagger-tools": "^0.10.4"
+  }
+}
