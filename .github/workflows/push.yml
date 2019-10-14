@@ -11,6 +11,9 @@ jobs:
         node: [8, 10, 12]
 
     steps:
+      - name: Test ENV
+        run: echo ${{ github.ref }}
+
       - uses: actions/checkout@master
 
       - name: Setup Node
