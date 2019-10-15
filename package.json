@@ -17,7 +17,6 @@
     "dev": "nodemon",
     "build": "rimraf dist && npm run tsc",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test",
     "version": "git add -A src",
     "postversion": "git push && git push --tags",
     "test-swag": "ts-node scripts/swag",
