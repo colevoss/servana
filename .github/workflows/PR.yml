@@ -28,7 +28,7 @@ jobs:
         run: npm test
 
       - name: Beta Version
-        run: npm version prerelease --preid=beta
+        run: npm --no-git-tag-version version prerelease --preid=beta
 
       - name: Publish
         run: npm publish
