@@ -1,5 +1,5 @@
 name: 'On Push'
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
@@ -26,3 +26,9 @@ jobs:
 
       - name: Test
         run: npm test
+
+      - name: Beta Version
+        run: npm version prerelease --preid=beta
+
+      - name: Publish
+        run: npm publish
