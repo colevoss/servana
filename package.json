@@ -7,6 +7,10 @@
   "files": [
     "dist/**/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:colevoss/servana.git"
+  },
   "scripts": {
     "tsc": "tsc",
     "test": "NODE_ENV=test jest --collect-coverage",
