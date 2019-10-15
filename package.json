@@ -35,7 +35,6 @@
     "@types/node": "^12.7.5",
     "@types/response-time": "^2.3.4",
     "@types/supertest": "^2.0.8",
-    "@types/swagger-tools": "^0.10.6",
     "@types/tmp": "^0.1.0",
     "axios": "^0.19.0",
     "jest": "^24.9.0",
@@ -45,7 +44,6 @@
     "response-time": "^2.3.2",
     "rimraf": "^3.0.0",
     "supertest": "^4.0.2",
-    "swagger-markdown": "^1.2.0",
     "tmp": "^0.1.0",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
@@ -60,7 +58,6 @@
     "pino-pretty": "^3.2.1",
     "reflect-metadata": "^0.1.13",
     "restana": "^3.3.1",
-    "restify-errors": "^8.0.1",
-    "swagger-tools": "^0.10.4"
+    "restify-errors": "^8.0.1"
   }
 }
