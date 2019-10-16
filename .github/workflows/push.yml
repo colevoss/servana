@@ -36,6 +36,7 @@ jobs:
           git config user.email "voss.cole@gmail.com"
           git config user.name "Cole Voss"
           npm version prerelease --preid=beta
+          npm publish
           git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
           git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }} --tags
       # - name: Publish Prep
