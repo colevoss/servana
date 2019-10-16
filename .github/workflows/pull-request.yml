@@ -1,6 +1,6 @@
 name: 'On Push'
 on:
-  pull_request:
+  - pull_request:
     branches-ignore:
       - master
 
