@@ -1,0 +1,23 @@
+name: 'On Push'
+on:
+  push:
+    branches-ignore:
+      - master
+    tag:
+      - v*-beta.*
+
+jobs:
+  build:
+    name: 'Publish Beta'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 12
+
+      - name: Publish Beta
+        run: npm run publish

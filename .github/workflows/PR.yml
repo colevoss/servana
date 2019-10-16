@@ -3,6 +3,8 @@ on:
   push:
     branches-ignore:
       - master
+    tags-ignore:
+      - v*-beta.*
 
 jobs:
   build:
@@ -28,7 +30,7 @@ jobs:
         run: npm test
 
       - name: Beta Version
-        run: npm --no-git-tag-version version prerelease --preid=beta
+        run: npm version prerelease --preid=beta && git push
       # - name: Publish Prep
       #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > $HOME/.npmrc
       # - name: Publish
