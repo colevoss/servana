@@ -32,7 +32,11 @@ jobs:
       - name: Beta Version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: hub config hub.protocol https && git config user.email "voss.cole@gmail.com" &&  git config user.name "Cole Voss" && npm version prerelease --preid=beta && git push origin HEAD:$GITHUB_SHA
+        run: |
+          git config user.email "voss.cole@gmail.com"
+          git config user.name "Cole Voss"
+          npm version prerelease --preid=beta
+          git push https://github.com/$GITHUB_REPOSITORY.git HEAD:$GITHUB_SHA
       # - name: Publish Prep
       #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > $HOME/.npmrc
       # - name: Publish
