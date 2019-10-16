@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: 'Testing'
+    name: 'Building and Publishing'
     runs-on: ubuntu-latest
 
     steps:
