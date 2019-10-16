@@ -3,7 +3,7 @@ on:
   push:
     branches-ignore:
       - master
-    tag:
+    tags:
       - v*-beta.*
 
 jobs:
@@ -18,6 +18,9 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 12
+
+      - name: npm install
+        run: npm install
 
       - name: Publish Beta
         run: npm run publish
