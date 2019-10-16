@@ -1,10 +1,8 @@
 name: 'Publish'
 on:
-  push:
-    branches-ignore:
-      - master
+  create:
     tags:
-      - v*-beta.*
+      - v*beta*
 
 jobs:
   build:
@@ -23,4 +21,4 @@ jobs:
         run: npm install
 
       - name: Publish Beta
-        run: npm run publish
+        run: npm publish
