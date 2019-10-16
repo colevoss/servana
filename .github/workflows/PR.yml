@@ -4,7 +4,7 @@ on:
     branches-ignore:
       - master
     tags-ignore:
-      - v*-beta.*
+      - 'v*-beta.*'
 
 jobs:
   build:
