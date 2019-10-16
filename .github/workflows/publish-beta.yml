@@ -1,8 +1,10 @@
 name: 'Publish'
 on:
-  create:
+  push:
+    branches-ignore:
+      - master
     tags:
-      - '*'
+      - v*-beta.*
 
 jobs:
   build:
