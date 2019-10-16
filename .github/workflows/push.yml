@@ -33,7 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm --no-git-tag-version version prerelease --preid=${{ github.sha }}
+          npm --no-git-tag-version version prerelease --preid=beta-${{ github.sha }}
           npm version prerelease --preid=beta && git push
           npm version prerelease --preid=beta
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > $HOME/.npmrc
