@@ -82,7 +82,7 @@ MyServer.create([MyService]).then((server) => {
 
 The `Servce` class is used to create a collection of routes off of a base route. Extend this class to create new services and endpoints.
 
-#### Route
+#### route
 
 ```ts
 public route: string;
