@@ -32,21 +32,24 @@ yarn add @colevoss/servana
 
 ## Examples
 
+### Super Simple
+
+This example sets up an HTTP server with a route of `GET /my-route/hello` that will respond with a JSON object of `{ howdy: 'hello ' }`
+
+See [`examples/super-simple.ts`](examples/super-simple.ts)
+
 ```typescript
-import { Service, Server, Get Post, Request, Response, Context } from '@colevoss/servana'
+import { Service, Server, Get, Context } from '@colevoss/servana';
 
 // Create a route and its actions
 class MyService extends Service {
-
   // Base Route
   public route = 'my-route';
 
   @Get('/hello') // Creates the route GET /my-route/hello
   public hello(context: Context) {
-
     // Sends back JSON
-    ctx.send({ howdy: 'Hello', });
-
+    context.send({ howdy: 'Hello' });
   }
 }
 
@@ -55,26 +58,20 @@ class MyServer extends Server {
   public name = 'MyServer';
 }
 
-
 // Start it up (async/await)
 const main = async () => {
   // Initialize the server and service routes
-  const server = await MyServer.create([
-    MyService
-  ]);
+  const server = await MyServer.create([MyService]);
 
   // Start the service and listen on route 3000
   await server.start(3000);
-}
+};
 
 main();
 
-
 // OR Start up using promises
 
-MyServer.create([
-  MyService
-]).then(server => {
-  server.start(3000)
-})
+MyServer.create([MyService]).then((server) => {
+  server.start(3000);
+});
 ```
