@@ -138,4 +138,67 @@ public contextFactory<T>(
 
 The `contextFactory` function is called on each request and initializes an intance of Context to be passed to each endpoint by default. This function can be overwritten to supply a custom `Context` instance to each endpoint.
 
-### [`Context`](src/Context.ts)
+### [`Context<Body, Query>`](src/Context.ts)
+
+#### Context
+
+```ts
+new Context(request: Request, response: Response)
+```
+
+#### params
+
+```ts
+public params: { [key: string]: string }
+```
+
+The route params for the endpoint's route. A route of `/:id` will provide the params at `context.params.id`
+
+#### body
+
+The `body` property is populated by the request body provided on post, put, and delete requests
+
+```ts
+interface TestBody {
+  abra: string;
+  ala: string;
+}
+
+class BodyExampleService extends Service {
+  public route = 'hello';
+
+  @Get('/test')
+  public bodyExamplePath(ctx: Context<TestBody>) {}
+}
+```
+
+#### query
+
+```ts
+public query: Q;
+```
+
+The query property is populated by the query parameters provided when a request to that endpoint is requested.
+
+```ts
+interface TestQuery {
+  abra: string;
+  ala: string;
+}
+
+class QueryExampleService extends Service {
+  public route = 'hello';
+
+  @Get('/test')
+  public queryExamplePath(ctx: Context<{} /* Body */, TestQuery>) {}
+}
+```
+
+A request to `GET hello/test?abra=kadabra&ala=kazam` will populate the `ctx.query` object as follows:
+
+```ts
+{
+  abra: 'kadabra',
+  ala: 'kazam'
+}
+```
