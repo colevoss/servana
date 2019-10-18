@@ -78,6 +78,42 @@ MyServer.create([MyService]).then((server) => {
 
 ## Spec
 
+### Route Decorators
+
+The `@Get`, `@Post`, `@Put`, and `@Delete` decorators are available to create your service endpoints. Supply a path to each decorator to create that endpoint.
+
+```ts
+class TestService extends Service {
+  public route = 'test';
+
+  @Get('/get-route')
+  public async getRoute(ctx: Context) {
+    /* ... */
+  }
+
+  @Post('/post-route')
+  public async postRoute(ctx: Context) {
+    /* ... */
+  }
+
+  @Put('/put-route')
+  public async putRoute(ctx: Context) {
+    /* ... */
+  }
+
+  @Delete('/delete-route')
+  public async deleteRoute(ctx: Context) {
+    /* ... */
+  }
+}
+```
+
+Since restana uses `find-my-way` for its routing, the Route Decorators support [these path formats](https://github.com/delvedor/find-my-way#supported-path-formats).
+
+You can use path parameters like `/test/:id` and the `id` parameter will be available at `context.params.id` that is passed to that endpoint.
+
+**note:** More methods will probably added later.
+
 ### [`Service`](src/Service.ts)
 
 The `Servce` class is used to create a collection of routes off of a base route. Extend this class to create new services and endpoints.
@@ -101,3 +137,5 @@ public contextFactory<T>(
 ```
 
 The `contextFactory` function is called on each request and initializes an intance of Context to be passed to each endpoint by default. This function can be overwritten to supply a custom `Context` instance to each endpoint.
+
+### [`Context`](src/Context.ts)
