@@ -82,11 +82,22 @@ MyServer.create([MyService]).then((server) => {
 
 The `Servce` class is used to create a collection of routes off of a base route. Extend this class to create new services and endpoints.
 
-#### `public route: string`
+#### Route
+
+```ts
+public route: string;
+```
 
 The `route` property acts as a base route for all endpoints declared in that service.
 **note**: You do not need to add a leading `/` to the route property.
 
-#### `public contextFactory<T>(request: Request, response: Response): T extends Context`
+#### contextFactory
+
+```ts
+public contextFactory<T>(
+  request: Request,
+  response: Response
+): T extends Context`
+```
 
 The `contextFactory` function is called on each request and initializes an intance of Context to be passed to each endpoint by default. This function can be overwritten to supply a custom `Context` instance to each endpoint.
