@@ -8,7 +8,7 @@ This library helps you write REST API's with TypeScript more easily and more enj
 
 ## Why Restana?
 
-According to Restana's docs and @jkyberneees's research and benchmarking, Restana is one of the fastest HTTP server's written in Node.js ([See here]())
+According to Restana's docs and @jkyberneees's research and benchmarking, Restana is one of the fastest HTTP server's written in Node.js.
 
 As you can see [here](https://github.com/the-benchmarker/web-frameworks#full-table-1), Restana is much faster than other popular HTTP/REST node libraries like Express, Koa, and Fastify so I wanted to build my little TS framework on top of the fastest library out there.
 
@@ -75,3 +75,18 @@ MyServer.create([MyService]).then((server) => {
   server.start(3000);
 });
 ```
+
+## Spec
+
+### [`Service`](src/Service.ts)
+
+The `Servce` class is used to create a collection of routes off of a base route. Extend this class to create new services and endpoints.
+
+#### `public route: string`
+
+The `route` property acts as a base route for all endpoints declared in that service.
+**note**: You do not need to add a leading `/` to the route property.
+
+#### `public contextFactory<T>(request: Request, response: Response): T extends Context`
+
+The `contextFactory` function is called on each request and initializes an intance of Context to be passed to each endpoint by default. This function can be overwritten to supply a custom `Context` instance to each endpoint.
