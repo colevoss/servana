@@ -168,8 +168,20 @@ class BodyExampleService extends Service {
   public route = 'hello';
 
   @Get('/test')
-  public bodyExamplePath(ctx: Context<TestBody>) {}
+  public bodyExamplePath(ctx: Context<TestBody>) {
+    // Access the request body at ctx.body
+  }
 }
+```
+
+```js
+fetch('host/hello/test', {
+  method: 'POST',
+  body: JSON.stringify({
+    abra: 'kadabra',
+    ala: 'kazam',
+  }),
+});
 ```
 
 #### query
@@ -190,7 +202,9 @@ class QueryExampleService extends Service {
   public route = 'hello';
 
   @Get('/test')
-  public queryExamplePath(ctx: Context<{} /* Body */, TestQuery>) {}
+  public queryExamplePath(ctx: Context<{}, TestQuery>) {
+    // Access the query params at ctx.query
+  }
 }
 ```
 
@@ -201,4 +215,24 @@ A request to `GET hello/test?abra=kadabra&ala=kazam` will populate the `ctx.quer
   abra: 'kadabra',
   ala: 'kazam'
 }
+```
+
+#### send()
+
+```ts
+public send<T>(data: T, code: number = 200)
+```
+
+Use the `send` function to respond with a JSON response. The object provided as `data` will be the response body when the endpoint is requested. You can optionally provide a different status code as the `code` to respond with a different status code. By default the status code is `200`.
+
+#### error()
+
+```ts
+public error<E>(error: E)
+```
+
+Servana uses [restify-errors](https://github.com/restify/errors) to provide a wide range of error objects that map to many HTTP status codes. Provide an instance of any restify error to this function and the request will be responded to appropriately. Errors can be imported directly from Servana like so:
+
+```ts
+import { InternalServerError } from '@colevoss/servana';
 ```

@@ -1,7 +1,7 @@
 import { Server, Service, Context, Get, Request, Response } from '../src';
 import { LockedError } from '../src/errors';
-import * as swagger from 'swagger-tools';
-import swaggerDocument from './swagger';
+// import * as swagger from 'swagger-tools';
+// import swaggerDocument from './swagger';
 
 const responseTime = (req: Request, response: Response, next: any) => {
   const now = new Date().getTime();
@@ -51,19 +51,17 @@ class MyService extends Server {
   //   // this.swaggerMiddleware();
   // }
 
-  private swaggerMiddleware() {
-    swagger.initializeMiddleware(swaggerDocument, swag => {
-      this.app.use(swag.swaggerMetadata());
-      this.app.use(swag.swaggerValidator());
-      this.app.use(swag.swaggerUi());
-    });
-  }
+  // private swaggerMiddleware() {
+  //   swagger.initializeMiddleware(swaggerDocument, swag => {
+  //     this.app.use(swag.swaggerMetadata());
+  //     this.app.use(swag.swaggerValidator());
+  //     this.app.use(swag.swaggerUi());
+  //   });
+  // }
 }
 
 const start = async () => {
   const serv = await MyService.create([TestService]);
-
-  console.log('laksjdhfaksdf');
 
   await serv.start(3000);
 };

@@ -8,3 +8,4 @@ export * from './Server';
 export * from './Service';
 export * from './Route';
 export * from './interfaces';
+export * from './errors';
