@@ -1,5 +1,5 @@
 {
-  "name": "@colevoss/servana",
+  "name": "servana",
   "version": "1.3.3",
   "description": "Typescript Framework for Restana",
   "main": "dist/index.js",
@@ -10,9 +10,6 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:colevoss/servana.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "tsc": "tsc",
