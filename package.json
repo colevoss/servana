@@ -1,6 +1,6 @@
 {
   "name": "servana",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Typescript Framework for Restana",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
