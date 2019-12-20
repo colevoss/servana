@@ -1,5 +1,5 @@
 import { Server, Service, Context, Get, Request, Response } from '../src';
-import { LockedError } from '../src/errors';
+import { NotFoundError } from '../src/errors';
 // import * as swagger from 'swagger-tools';
 // import swaggerDocument from './swagger';
 
@@ -36,6 +36,8 @@ class TestService extends Service {
 
   @Get('/:id')
   public test(ctx: MyContext) {
+    throw new NotFoundError('asdfasdfasdf');
+    // throw new Error('asdfaskdjfhasd');
     ctx.send({ hello: this.hello + ctx.params.id });
   }
 }

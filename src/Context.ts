@@ -1,7 +1,7 @@
 import { Request, Response } from './interfaces';
 import { Logger } from './Logger';
 import { Logger as ILogger } from 'pino';
-import { DefinedHttpError } from 'restify-errors';
+import { DefinedHttpError, InternalServerError } from 'restify-errors';
 
 type IParams = { [key: string]: string };
 
@@ -34,10 +34,22 @@ export class Context<Body = {}, Query = {}> {
     );
   }
 
-  // public error<E extends Error & { code?: string; statusCode?: number }>(
   public error<E extends DefinedHttpError>(error: E) {
-    this.response.send(error.toJSON(), error.statusCode);
+    let err: any = error;
 
-    this.logger.info(error);
+    if (!err.statusCode) {
+      err = new InternalServerError(
+        {
+          cause: error,
+        },
+        err.message,
+      );
+
+      this.logger.error(err);
+    } else {
+      this.logger.info(error);
+    }
+
+    this.response.send(err.toJSON(), err.statusCode);
   }
 }
