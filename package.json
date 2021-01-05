@@ -34,7 +34,7 @@
     "@types/node": "^12.7.5",
     "@types/response-time": "^2.3.4",
     "@types/tmp": "^0.1.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "jest": "^24.9.0",
     "js-yaml": "^3.13.1",
     "nodemon": "^1.19.2",
